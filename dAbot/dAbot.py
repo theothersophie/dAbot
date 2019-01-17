@@ -256,6 +256,8 @@ def login(username, password):
         r = re.search(regex['login_error'], post_html)
         if r:
             reason = strip_html(r.group(1), '\n')
+        else:
+            reason = None
         echo(Fore.RED + 'Login failed, reason: {}'.format(reason or 'unspecified'))
         log('login_error.htm', post_html)
         echo(Back.RED + post.url)
